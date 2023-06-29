@@ -24,6 +24,9 @@
   });
 
   const onSelectChange = ({ target: { value } }) => {
+    if (document.querySelector(".pe-pro-seal")) {
+      document.querySelector(".pe-pro-seal").remove();
+    }
     window.provenExpert.proSeal({
       widgetId: value,
       language: "en-US",
@@ -40,10 +43,13 @@
       displayReviewer: true,
       displayReviewerLastName: false,
       disableCache: true,
-      embeddedSelector:
-        value === "c1148361-ebb4-4c4b-983d-2a66091c2203"
-          ? ".test-container"
-          : undefined,
+      showBackPage: true,
+      embeddedSelector: [
+        "84dec08b-6e54-447d-819b-1fb3f8ef2a5d",
+        "11b0bd73-6bd0-402e-b4ed-3aeb9ff0a93c",
+      ].includes(value)
+        ? ".test-container"
+        : undefined,
     });
   };
 
